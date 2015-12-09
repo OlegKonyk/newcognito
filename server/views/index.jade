@@ -1,0 +1,44 @@
+extends ../includes/layout
+
+
+block main-content
+	nav.navbar.navbar-default.navbar-fixed-top(id="mainNav")
+		.container-fluid
+			//Brand and toggle get grouped for better mobile display
+			.navbar-header
+				button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+					span.sr-only Toggle navigation
+					span.icon-bar
+					span.icon-bar
+					span.icon-bar
+				a.navbar-brand.page-scroll(href='/') New Cognito
+
+			// Collect the nav links, forms, and other content for toggling
+			#bs-example-navbar-collapse-1.collapse.navbar-collapse(ng-include="'/partials/account/navbar-login'")
+				//ul.nav.navbar-nav.navbar-right
+					li
+						a.page-scroll(href='#about') About
+					li
+						a.page-scroll(href='#services') Services
+					li
+						a.page-scroll(href='#portfolio') Portfolio
+					//li
+						a.page-scroll(href='/signin') Sign in
+					li(ng-include="'/partials/account/navbar-login'")
+			
+
+			//.navbar-header
+				a.navbar-brand(href="/") MultiVision
+					h6 -Extreme Tech Training
+			//.navbar-colapse.colapse
+				ul.nav.navbar-nav
+					li
+						a(href="/") Home
+					li
+						a(href="/courses") Courses
+				div(ng-include="'/partials/account/navbar-login'")
+	
+	ng-view
+
+	footer.container.text-center
+		p &copy; 2015 NEW COGNITO

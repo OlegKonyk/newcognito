@@ -1,0 +1,37 @@
+{
+  "name": "multivision",
+  "version": "0.0.0",
+  "homepage": "https://github.com/OlegKonyk/multivision",
+  "authors": [
+    "Oleg Konyk <learningmean@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [
+    "amd"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "toastr": "~2.1.2",
+    "angular": "~1.4.6",
+    "angular-resource": "~1.4.6",
+    "angular-route": "~1.4.6",
+    "bootstrap": "~3.3.5",
+    "angular-mocks": "~1.4.7",
+    "font-awesome": "fontawesome#~4.5.0",
+    "angular-scroll": "~1.0.0"
+  },
+  "resolutions": {
+    "angular": "~1.4.6"
+  }
+}

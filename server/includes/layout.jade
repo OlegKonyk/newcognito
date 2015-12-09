@@ -1,0 +1,30 @@
+doctype html
+html
+	head
+		title New cognito
+		link(href="/favicon.ico", rel="shotcut icon", type="image/x-icon")
+		link(rel="stylesheet", href="/vendor/bootstrap/dist/css/bootstrap.css")
+
+		//Custom fonts
+		link(href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css')
+		link(href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css')
+		link(rel="stylesheet", href="/vendor/font-awesome/css/font-awesome.min.css")
+
+		//Plugin css
+		link(rel="stylesheet", href="/css/animate.min.css")
+
+		//Other css
+		link(rel="stylesheet", href="/vendor/toastr/toastr.css")
+
+		//Custom css
+		link(rel="stylesheet", href="/css/site.css")
+		link(rel="stylesheet", href="/css/ncStyle.css")
+
+		link(rel="stylesheet", href="/css/signin/form-elements.css")
+		link(rel="stylesheet", href="/css/signin/signin.css")
+
+		base(href="/")
+	body(ng-app="app", id="page-top")
+		include currentUser
+		block main-content
+		include scripts

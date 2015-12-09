@@ -1,0 +1,46 @@
+ul.nav.navbar-nav.navbar-right(ng-controller="mvNavBarLoginCtrl")
+	li
+		a.page-scroll(href='#about') About
+	li
+		a.page-scroll(href='#services') Services
+	li
+		a.page-scroll(href='#portfolio') Portfolio
+	li(ng-hide="identity.isAuthenticated()")
+		a.page-scroll(href='/signin') Sign in
+	li.dropdown(ng-show="identity.isAuthenticated()")
+		a.dropdown-toggle(href="", data-toggle="dropdown")
+			|	{{identity.currentUser.firstName + " " + identity.currentUser.lastName}}
+			b.caret
+		ul.dropdown-menu
+			li(ng-show="identity.currentUser.isAdmin()")
+				a(href="/admin/users") User Admin
+			li
+				a(href="/profile") Profile
+			li
+				a(href="", ng-click = "signout()") SignOut
+
+
+//.navbar-right(ng-controller="mvNavBarLoginCtrl")
+	form.navbar-form(ng-hide="identity.isAuthenticated()")
+		ul.nav.navbar-nav
+			//li
+				a(href="/signup") Sign up
+			li
+				a(href="/signin") Sign in
+		//.form-group
+			input.form-control(placeholder = "Email", ng-model="username")
+		//.form-group
+			input.form-control(type="password", placeholder = "Password", ng-model="password")
+		//button.btn.btn-primary(ng-click="signin(username, password)") Signin
+	ul.nav.navbar-nav.navbar-right(ng-show="identity.isAuthenticated()")
+		li.dropdown
+			a.dropdown-toggle(href="", data-toggle="dropdown")
+				|	{{identity.currentUser.firstName + " " + identity.currentUser.lastName}}
+				b.caret
+			ul.dropdown-menu
+				li(ng-show="identity.currentUser.isAdmin()")
+					a(href="/admin/users") User Admin
+				li
+					a(href="/profile") Profile
+				li
+					a(href="", ng-click = "signout()") SignOut
