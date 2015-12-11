@@ -1,19 +1,20 @@
-li
-	a.page-scroll(href='#about') About
-li
-	a.page-scroll(href='#services') Services
-li
-	a.page-scroll(href='/courses') Courses
-li(ng-hide="identity.isAuthenticated()")
-	a.page-scroll(href='/signin') Sign in
-li.dropdown(ng-show="identity.isAuthenticated()")
-	a.dropdown-toggle(href="", data-toggle="dropdown")
-		|	{{identity.currentUser.firstName + " " + identity.currentUser.lastName}}
-		b.caret
-	ul.dropdown-menu
-		li(ng-show="identity.currentUser.isAdmin()")
-			a(href="/admin/users") User Admin
-		li
-			a(href="/profile") Profile
-		li
-			a(href="", ng-click = "signout()") SignOut
+ul.nav.navbar-nav.navbar-right(ng-controller="mvNavBarLoginCtrl")
+	li
+		a.page-scroll(href='#about') About
+	li
+		a.page-scroll(href='#services') Services
+	li
+		a.page-scroll(href='/courses') Courses
+	li(ng-hide="identity.isAuthenticated()")
+		a.page-scroll(href='/signin') Sign in
+	li.dropdown(ng-show="identity.isAuthenticated()")
+		a.dropdown-toggle(href="", data-toggle="dropdown")
+			|	{{identity.currentUser.firstName + " " + identity.currentUser.lastName}}
+			b.caret
+		ul.dropdown-menu
+			li(ng-show="identity.currentUser.isAdmin()")
+				a(href="/admin/users") User Admin
+			li
+				a(href="/profile") Profile
+			li
+				a(href="", ng-click = "signout()") SignOut
