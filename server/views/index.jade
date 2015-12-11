@@ -14,29 +14,7 @@ block main-content
 
 			// Collect the nav links, forms, and other content for toggling
 			#bs-example-navbar-collapse-1.collapse.navbar-collapse(ng-include="'/partials/account/navbar-login'")
-				//ul.nav.navbar-nav.navbar-right
-					li
-						a.page-scroll(href='#about') About
-					li
-						a.page-scroll(href='#services') Services
-					li
-						a.page-scroll(href='/courses') Courses
-					//li
-						a.page-scroll(href='/signin') Sign in
-					li(ng-include="'/partials/account/navbar-login'")
-			
-
-			//.navbar-header
-				a.navbar-brand(href="/") MultiVision
-					h6 -Extreme Tech Training
-			//.navbar-colapse.colapse
-				ul.nav.navbar-nav
-					li
-						a(href="/") Home
-					li
-						a(href="/courses") Courses
-				div(ng-include="'/partials/account/navbar-login'")
-	
+				ul.nav.navbar-nav.navbar-right(ng-controller="mvNavBarLoginCtrl")(ng-include="'/partials/account/navbar-login'")	
 	ng-view
 
 	footer.text-center
