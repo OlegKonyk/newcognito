@@ -28,7 +28,7 @@ body {
     height: 100%;
     /*width: 100%;*/
     /*z-index: -1;*/
-    background: url(../img/header_1.jpg) no-repeat scroll top left;;
+    background: url(../img/header_mob.jpg) no-repeat scroll top left;/*scroll makesit fit for mobile*/
     background-position: center;
     -webkit-background-size: cover;
     -moz-background-size: cover;

@@ -7,7 +7,7 @@ angular.module('app').controller('mvSignupCtrl', function($scope, mvUser, mvAuth
 			firstName: $scope.fname, 
 			lastName: $scope.lname
 		};
-		//mvAuth.log(newUserData);
+		console.log(newUserData);
 		mvAuth.createUser(newUserData).then(function(){
 			mvNotifier.notify('User account created!');
 			$location.path('/');

@@ -1,4 +1,62 @@
-.container
+.top-content.signup
+	.inner-bg
+		.container
+			.row
+				.col-sm-6.col-sm-offset-3.form-box
+					
+
+					.form-top
+						.form-top-left
+							h3 Create new user accout
+							p Enter New User Information to signup:
+						.form-top-right
+							i.fa.fa-user-plus
+					.form-bottom
+
+						form(name="signupForm")
+
+							.form-group
+								label.sr-only(for="email") Email
+								input.form-control(name="email", type="email", placeholder="Email", ng-model="email", required)
+							.form-group
+								label.sr-only(for="password") Password
+								input.form-control(name="password", type="password", placeholder="Password", ng-model="password", required)
+							.form-group
+								label.sr-only(for="fname") First Name
+								input.form-control(name="fname", type="text", placeholder="First Name", ng-model="fname", required)
+							.form-group
+								label.sr-only(for="lname") Last Name
+								input.form-control(name="lname", type="text", placeholder="Last Name", ng-model="lname", required)
+
+							button.btn.btn-primary(ng-click="signup()", ng-disabled="signupForm.$invalid") Submit
+							h3 Already Have an Account? 
+								a(href="/signin") Signin!
+
+						//form.login-form
+							.form-group
+								label.sr-only(for='form-username') Username
+								input#form-username.form-username.form-control(ng-model='username', type='text', name='form-username', placeholder='Username...')
+							.form-group
+								label.sr-only(for='form-password') Password
+								input#form-password.form-password.form-control(ng-model='password', type='password', name='form-password', placeholder='Password...')
+							button.btn(ng-click="signin(username, password)") Sign in!
+							h3 Don't Have an Account? 
+								a(href="/signup") Sign up today!
+
+			.row
+				.col-sm-6.col-sm-offset-3.social-login
+					h3 ...or Sign up with:
+					.social-login-buttons
+					a.btn.btn-link-2(href='#')
+						i.fa.fa-facebook
+						|  Facebook
+					a.btn.btn-link-2(href='#')
+						i.fa.fa-twitter
+						|  Twitter
+					a.btn.btn-link-2(href='#')
+						i.fa.fa-google-plus
+						|  Google Plus
+//.container
 	.well
 		form.form-horizontal(name="signupForm")
 			fieldset
