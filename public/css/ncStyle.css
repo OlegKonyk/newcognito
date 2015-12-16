@@ -8,6 +8,7 @@ html,
 body {
     width: 100%;
     height: 100%;
+
     
 }
 
@@ -17,19 +18,23 @@ body {
 }
 #intro-top{
     height: 80%;
+    margin-top: -70px;
+    /*max-height: 550px;*/
 }
 #home-page-hero{
-    position: fixed;
-    top: 0;
-    height: 90%;
-    width: 100%;
+    /*position: fixed;
+    top: 0;*/
+    height: 100%;
+    /*max-height: 600px;*/
+    /*width: 100%;*/
     z-index: -1;
     background: url(../img/header.jpg) no-repeat fixed top left;;
-    /*background-position: center;*/
+    background-position: center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+
 }
 
 hr {
@@ -94,17 +99,18 @@ aside {
     padding: 0;
 }
 
-.navbar-default {
+.navbar-default, 
+.navbar-default.scroll {
     border-color: rgba(34,34,34,.05);
     font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
-    /*background-color: #E5E5E5;*/
     background-color: #fff;
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
     transition: all .35s;
 }
 
-.navbar-default .navbar-header .navbar-brand {
+.navbar-default .navbar-header .navbar-brand, 
+.navbar-default.scroll .navbar-header .navbar-brand {
     text-transform: uppercase;
     font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
     font-weight: 700;
@@ -112,12 +118,16 @@ aside {
 }
 
 .navbar-default .navbar-header .navbar-brand:hover,
-.navbar-default .navbar-header .navbar-brand:focus {
+.navbar-default .navbar-header .navbar-brand:focus,
+.navbar-default.scroll .navbar-header .navbar-brand:hover,
+.navbar-default.scroll .navbar-header .navbar-brand:focus {
     color: #eb3812;
 }
 
 .navbar-default .nav > li>a,
-.navbar-default .nav>li>a:focus {
+.navbar-default .nav>li>a:focus,
+.navbar-default.scroll .nav > li>a,
+.navbar-default.scroll .nav>li>a:focus {
     text-transform: uppercase;
     font-size: 13px;
     font-weight: 700;
@@ -125,20 +135,27 @@ aside {
 }
 
 .navbar-default .nav > li>a:hover,
-.navbar-default .nav>li>a:focus:hover {
+.navbar-default .nav>li>a:focus:hover,
+.navbar-default.scroll .nav > li>a:hover,
+.navbar-default.scroll .nav>li>a:focus:hover {
     color: #f05f40;
 }
 
 .navbar-default .nav > li.active>a,
-.navbar-default .nav>li.active>a:focus {
+.navbar-default .nav>li.active>a:focus,
+.navbar-default.scroll .nav > li.active>a,
+.navbar-default.scroll .nav>li.active>a:focus {
     color: #f05f40!important;
     background-color: transparent;
 }
 
 .navbar-default .nav > li.active>a:hover,
-.navbar-default .nav>li.active>a:focus:hover {
+.navbar-default .nav>li.active>a:focus:hover,
+.navbar-default.scroll .nav > li.active>a:hover,
+.navbar-default.scroll .nav>li.active>a:focus:hover {
     background-color: transparent;
 }
+
 
 @media(min-width:768px) {
     .navbar-default {
@@ -191,6 +208,7 @@ aside {
     }
 }
 
+
 header {
     position: relative;
     width: 100%;
@@ -208,7 +226,7 @@ header {
 header .header-content {
     position: relative;
     width: 100%;
-    padding: 100px 15px;
+    padding: 170px 15px;
     text-align: center;
 }
 
@@ -237,6 +255,7 @@ header .header-content .header-content-inner p {
 
     header .header-content {
         position: absolute;
+        /*top: 50%;*/
         top: 50%;
         padding: 0 50px;
         -webkit-transform: translateY(-50%);
@@ -494,5 +513,5 @@ body {
     webkit-tap-highlight-color: #222;
 }
 #services, footer{
-    background-color: white;
+    background-color: transparent;
 }

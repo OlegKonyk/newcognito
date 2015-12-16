@@ -1,7 +1,7 @@
 extends ../includes/layout
 
 block main-content
-	nav.navbar.navbar-default.navbar-fixed-top(id="mainNav" role="navigation")
+	nav.navbar.navbar-default.navbar-fixed-top(ng-class="{scroll:showTopNav || shownav}",  id="mainNav" role="navigation")
 		.container-fluid
 			//Brand and toggle get grouped for better mobile display
 			.navbar-header
@@ -16,6 +16,5 @@ block main-content
 			#bs-example-navbar-collapse-1.collapse.navbar-collapse(ng-include="'/partials/account/navbar-login'")
 	
 	ng-view
-
 	footer.text-center
 		p &copy; 2015 NEW COGNITO

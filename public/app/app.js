@@ -1,4 +1,4 @@
-angular.module('app', ['ngResource', 'ngRoute']);//, 'duScroll'
+angular.module('app', ['ngResource', 'ngRoute', 'duScroll']);//, 'duScroll'
 
 
 
@@ -17,7 +17,8 @@ angular.module('app').config(function($routeProvider, $locationProvider){
 	$routeProvider
 		.when('/', {templateUrl: '/partials/main/main', controller: 'mvMainCtrl'}) //'mvMainCtrl'
 		.when('/signin', {templateUrl: '/partials/account/signin', 
-			controller: 'ncSigninCtrl'
+			controller: 'ncSigninCtrl',
+      shownav: true
 		})
 		.when('/admin/users', {templateUrl: '/partials/admin/user-list', 
 			controller: 'mvUserListCtrl', resolve: routeRoleChecks.admin 
@@ -40,28 +41,45 @@ angular.module('app').config(function($routeProvider, $locationProvider){
 
 angular.module('app').run(function($rootScope, $location, mvAuth, mvNotifier){
 	$rootScope.postLogInRoute = null;
-    $rootScope.$on('$routeChangeError', function(evt, current, previous, rejection){
-		if(rejection === 'not authorized'){
+
+  $rootScope.$on('$routeChangeError', function(evt, current, previous, rejection){
+  	if(rejection === 'not authorized'){
             mvNotifier.notify('Not authorized! Redirecting to home page.');
-			$location.path('/');
-		}
+  		$location.path('/');
+  	}
         if(rejection === 'not authenticated'){
             mvNotifier.notify('Not authenticated! Please sign in first.');
             mvAuth.setPostLogInRoute($location.path())
             $location.path('/signin');
         }
-        /*if(rejection === 'not authenticated'){
-            console.log("z::::z")
-            //console.log(current.$$route.originalPath)
-            $rootScope.postLogInRoute = $location.path();
-            //mvAuth.setPostLogInRoute
-            console.log("init route")
-            console.log($rootScope.postLogInRoute)
-            $location.path('/signin');
-        }*/
 	})
 
+  $rootScope.$on('$routeChangeStart', function (event, nextRoute, currentRoute) {
+
+        if (nextRoute.shownav) {
+          $rootScope.shownav = true;
+        } else{
+          $rootScope.shownav = false;
+        }
+    });
+
 } )
+
+
+
+angular.module('app').directive("scroll", function ($window) {
+    return function(scope, element, attrs) {
+        angular.element($window).bind("scroll", function() {
+             if (this.pageYOffset >= 100) {
+             	console.log("****")
+                 scope.showTopNav = true;
+             } else {
+                 scope.showTopNav = false;
+             }
+            scope.$apply();
+        });
+    };
+});
 
 /*angular.module('app').controller('MyCtrl', function($scope, $document){
     $scope.toTheTop = function() {

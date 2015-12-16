@@ -1,6 +1,9 @@
 angular.module('app').controller('ncSigninCtrl', function($rootScope, $scope, $http, mvIdentity, mvNotifier, mvAuth, $location){
-
+	$scope.showTopNav = true;
 	$scope.identity = mvIdentity;
+
+	console.log("?????")
+	console.log($location)
     
     $scope.signin = function(username, password){
 
