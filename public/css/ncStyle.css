@@ -19,16 +19,16 @@ body {
 #intro-top{
     height: 80%;
     margin-top: -70px;
+    min-height: 650px;
     /*max-height: 550px;*/
 }
 #home-page-hero{
     /*position: fixed;
     top: 0;*/
     height: 100%;
-    /*max-height: 600px;*/
     /*width: 100%;*/
-    z-index: -1;
-    background: url(../img/header.jpg) no-repeat fixed top left;;
+    /*z-index: -1;*/
+    background: url(../img/header_1.jpg) no-repeat fixed top left;;
     background-position: center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -158,6 +158,20 @@ aside {
 
 
 @media(min-width:768px) {
+    #home-page-hero{
+        /*position: fixed;
+        top: 0;*/
+        height: 100%;
+        /*width: 100%;*/
+        /*z-index: -1;*/
+        background: url(../img/header.jpg) no-repeat fixed top left;;
+        background-position: center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+
+    }
     .navbar-default {
         border-color: rgba(255,255,255,.3);
         background-color: transparent;
@@ -226,7 +240,7 @@ header {
 header .header-content {
     position: relative;
     width: 100%;
-    padding: 170px 15px;
+    padding: 200px 15px;
     text-align: center;
 }
 
@@ -255,7 +269,6 @@ header .header-content .header-content-inner p {
 
     header .header-content {
         position: absolute;
-        /*top: 50%;*/
         top: 50%;
         padding: 0 50px;
         -webkit-transform: translateY(-50%);
