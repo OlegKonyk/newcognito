@@ -16,6 +16,21 @@ body {
     font-family: Merriweather,'Helvetica Neue',Arial,sans-serif;
     
 }
+.view-content{
+    min-height: calc(100% - 76px);
+    margin-top: -20px;
+    /*margin-bottom: -10px;*/
+    /*background-color: green;*/
+
+    /*z-index: -1;
+    background: url(../../img/login.jpg) no-repeat fixed top left;;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;*/
+}
+
 #intro-top{
     height: 80%;
     margin-top: -70px;
@@ -68,8 +83,8 @@ h6 {
     font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
 }
 
-p {
-    margin-bottom: 20px;
+footer p {
+    margin-bottom: 0px !important;
     font-size: 16px;
     line-height: 1.5;
 }
@@ -527,4 +542,6 @@ body {
 }
 #services, footer{
     background-color: transparent;
+}
+.blog-post{
 }

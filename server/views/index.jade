@@ -1,7 +1,7 @@
 extends ../includes/layout
 
 block main-content
-	nav.navbar.navbar-default.navbar-fixed-top(ng-class="{scroll:showTopNav || shownav}",  id="mainNav" role="navigation")
+	nav.navbar.navbar-default(ng-class="{scroll:showTopNav || shownav =='show', 'navbar-fixed-top': shownav == 'fixed'}",  id="mainNav" role="navigation")
 		.container-fluid
 			//Brand and toggle get grouped for better mobile display
 			.navbar-header

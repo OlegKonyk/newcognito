@@ -1,8 +1,8 @@
 ul.nav.navbar-nav.navbar-right(ng-controller="mvNavBarLoginCtrl")
 	li
-		a.page-scroll(href='#about') About
+		a.page-scroll(href='/') About
 	li
-		a.page-scroll(href='#services') Services
+		a.page-scroll(href='/blog') Blog
 	li
 		a.page-scroll(href='/courses') Courses
 	li(ng-hide="identity.isAuthenticated()")
@@ -12,6 +12,8 @@ ul.nav.navbar-nav.navbar-right(ng-controller="mvNavBarLoginCtrl")
 			|	{{identity.currentUser.firstName + " " + identity.currentUser.lastName}}
 			b.caret
 		ul.dropdown-menu
+			li(ng-show="identity.currentUser.isAdmin()")
+				a(href="/admin/publishing") Publishing
 			li(ng-show="identity.currentUser.isAdmin()")
 				a(href="/admin/users") User Admin
 			li

@@ -15,27 +15,45 @@ angular.module('app').config(function($routeProvider, $locationProvider){
 	}
 	$locationProvider.html5Mode(true);
 	$routeProvider
-		.when('/', {templateUrl: '/partials/main/main', controller: 'mvMainCtrl'}) //'mvMainCtrl'
+		.when('/', {templateUrl: '/partials/main/main',
+      controller: 'mvMainCtrl',
+      shownav: 'fixed'
+    }) //'mvMainCtrl'
 		.when('/signin', {templateUrl: '/partials/account/signin', 
+      css: ['/css/signin/form-elements.css','/css/signin/signin.css'],
 			controller: 'ncSigninCtrl',
-      shownav: true
+      shownav: 'show'
 		})
     .when('/signup', {templateUrl: '/partials/account/signup', 
+      css: ['/css/signin/form-elements.css','/css/signin/signin.css'],
       controller: 'mvSignupCtrl',
-      shownav: true
+      shownav: 'show'
     })
 		.when('/admin/users', {templateUrl: '/partials/admin/user-list', 
-			controller: 'mvUserListCtrl', resolve: routeRoleChecks.admin 
+			controller: 'mvUserListCtrl', resolve: routeRoleChecks.admin,
+      shownav: 'show'
 		})
 		.when('/profile', {templateUrl: '/partials/account/profile', 
-			controller: 'mvProfileCtrl', resolve: routeRoleChecks.user
+			controller: 'mvProfileCtrl', resolve: routeRoleChecks.user,
+      shownav: 'show'
 		})
 		.when('/courses', {templateUrl: '/partials/courses/courses-list', 
-			controller: 'mvCourseListCtrl'
+			controller: 'mvCourseListCtrl',
+      shownav: 'show'
 		})
 		.when('/courses/:id', {templateUrl: '/partials/courses/course-details', 
-			controller: 'mvCourseDetailCtrl'
+			controller: 'mvCourseDetailCtrl',
+      shownav: 'show'
 		})
+    .when('/blog', {templateUrl: '/partials/blog/blog-main',
+    css: '/css/blog/blog-home.css', 
+      controller: 'ncBlogCtrl',
+      shownav: 'show'
+    })
+    .when('/admin/publishing', {templateUrl: '/partials/admin/publishing/publishing',
+      controller: 'ncPublishingCtrl',
+      shownav: 'show'
+    })
 
 });
 
@@ -56,9 +74,9 @@ angular.module('app').run(function($rootScope, $location, mvAuth, mvNotifier){
 	})
 
   $rootScope.$on('$routeChangeStart', function (event, nextRoute, currentRoute) {
-
+        console.log(nextRoute)
         if (nextRoute.shownav) {
-          $rootScope.shownav = true;
+          $rootScope.shownav = nextRoute.shownav;
         } else{
           $rootScope.shownav = false;
         }
@@ -81,6 +99,45 @@ angular.module('app').directive("scroll", function ($window) {
         });
     };
 });
+
+angular.module('app').directive('ncSmartHead', ['$rootScope','$compile',
+    function($rootScope, $compile){
+        return {
+            restrict: 'A',
+            link: function(scope, elem){
+               
+                var html = '<link rel="stylesheet" ng-repeat="(routeCtrl, cssUrl) in routeStyles" ng-href="{{cssUrl}}" >';
+                elem.append($compile(html)(scope));
+                scope.routeStyles = {};
+                $rootScope.$on('$routeChangeStart', function (e, next) {
+                   console.log("set up css: " + html)
+                    if(next && next.$$route && next.$$route.css){
+                        if(!angular.isArray(next.$$route.css)){
+                            next.$$route.css = [next.$$route.css];
+                        }
+                        angular.forEach(next.$$route.css, function(sheet){
+                            scope.routeStyles[sheet] = sheet;
+                        });
+                    }else{
+                      scope.routeStyles = {};
+                    }
+                     console.log("set up css: ")
+                     console.log(scope.routeStyles)
+                });
+                /*$rootScope.$on('$routeChangeSuccess', function(e, current, previous) {
+                    if (previous && previous.$$route && previous.$$route.css) {
+                        if (!angular.isArray(previous.$$route.css)) {
+                            previous.$$route.css = [previous.$$route.css];
+                        }
+                        angular.forEach(previous.$$route.css, function (sheet) {
+                            scope.routeStyles[sheet] = undefined;
+                        });
+                    }
+                });*/
+            }
+        };
+    }
+]);
 
 /*angular.module('app').controller('MyCtrl', function($scope, $document){
     $scope.toTheTop = function() {
