@@ -1,24 +1,22 @@
-angular.module('app', ['ngResource', 'ngRoute', 'duScroll']);//, 'duScroll'
-
-
+angular.module('app', ['ngResource', 'ngRoute', 'duScroll']);
 
 angular.module('app').config(function($routeProvider, $locationProvider){
-	var routeRoleChecks = {
+	
+  var routeRoleChecks = {
 		admin:	{ auth: function(mvAuth){
-					//return mvAuth.authorizeCurrentUserForRoute('admin');
-                    return mvAuth.authUserForRoute('admin');
-			}},
+      return mvAuth.authUserForRoute('admin');
+		}},
 		user:	{ auth: function(mvAuth){
-					//return mvAuth.authorizeAuthenticatedUserForRoute();
-                    return mvAuth.authUserForRoute();
-			}},
-	}
+      return mvAuth.authUserForRoute();
+		}},
+	};
+
 	$locationProvider.html5Mode(true);
 	$routeProvider
 		.when('/', {templateUrl: '/partials/main/main',
       controller: 'mvMainCtrl',
       shownav: 'fixed'
-    }) //'mvMainCtrl'
+    })
 		.when('/signin', {templateUrl: '/partials/account/signin', 
       css: ['/css/signin/form-elements.css','/css/signin/signin.css'],
 			controller: 'ncSigninCtrl',
@@ -74,7 +72,6 @@ angular.module('app').run(function($rootScope, $location, mvAuth, mvNotifier){
 	})
 
   $rootScope.$on('$routeChangeStart', function (event, nextRoute, currentRoute) {
-        console.log(nextRoute)
         if (nextRoute.shownav) {
           $rootScope.shownav = nextRoute.shownav;
         } else{
@@ -90,7 +87,6 @@ angular.module('app').directive("scroll", function ($window) {
     return function(scope, element, attrs) {
         angular.element($window).bind("scroll", function() {
              if (this.pageYOffset >= 100) {
-             	console.log("****")
                  scope.showTopNav = true;
              } else {
                  scope.showTopNav = false;
@@ -105,13 +101,12 @@ angular.module('app').directive('ncSmartHead', ['$rootScope','$compile',
         return {
             restrict: 'A',
             link: function(scope, elem){
-               
                 var html = '<link rel="stylesheet" ng-repeat="(routeCtrl, cssUrl) in routeStyles" ng-href="{{cssUrl}}" >';
                 elem.append($compile(html)(scope));
                 scope.routeStyles = {};
                 $rootScope.$on('$routeChangeStart', function (e, next) {
-                   console.log("set up css: " + html)
                     if(next && next.$$route && next.$$route.css){
+                        scope.routeStyles = {};
                         if(!angular.isArray(next.$$route.css)){
                             next.$$route.css = [next.$$route.css];
                         }
@@ -121,33 +116,9 @@ angular.module('app').directive('ncSmartHead', ['$rootScope','$compile',
                     }else{
                       scope.routeStyles = {};
                     }
-                     console.log("set up css: ")
-                     console.log(scope.routeStyles)
                 });
-                /*$rootScope.$on('$routeChangeSuccess', function(e, current, previous) {
-                    if (previous && previous.$$route && previous.$$route.css) {
-                        if (!angular.isArray(previous.$$route.css)) {
-                            previous.$$route.css = [previous.$$route.css];
-                        }
-                        angular.forEach(previous.$$route.css, function (sheet) {
-                            scope.routeStyles[sheet] = undefined;
-                        });
-                    }
-                });*/
+
             }
         };
     }
 ]);
-
-/*angular.module('app').controller('MyCtrl', function($scope, $document){
-    $scope.toTheTop = function() {
-      $document.scrollTopAnimated(0, 5000).then(function() {
-        console && console.log('You just scrolled to the top!');
-      });
-    }
-    var section3 = angular.element(document.getElementById('section-3'));
-    $scope.toSection3 = function() {
-      $document.scrollToElementAnimated(section3);
-    }
-  }
-).value('duScrollOffset', 0);*/

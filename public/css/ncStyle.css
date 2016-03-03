@@ -13,7 +13,7 @@ body {
 }
 
 body {
-    font-family: Merriweather,'Helvetica Neue',Arial,sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;/*Merriweather,'Helvetica Neue'*/
     
 }
 .view-content{
@@ -52,13 +52,13 @@ body {
 
 }
 
-hr {
+hr.short {
     max-width: 50px;
     border-color: #f05f40;
     border-width: 3px;
 }
 
-hr.light {
+hr.light.short {
     border-color: #fff;
 }
 

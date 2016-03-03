@@ -13,6 +13,7 @@ router.post('/api/users', users.createUser);
 router.put('/api/users', users.updateUser);
 
 router.get('/api/courses', courses.getCourses);
+
 router.get('/api/courses/:id', courses.getCourseById);
 
 router.post('/api/post', function (req, res) {
@@ -20,17 +21,26 @@ router.post('/api/post', function (req, res) {
     Publication.create(post, function(err){
 
     });
-    //post.save(function (err) {
-    //});
     res.json(req.body);
 });
 
 router.get('/api/posts', function (req, res) {
     Publication.find(function (err, posts) {
+        //res.sendStatus(403);
         res.json({
             posts: posts
         });
+
     });
+});
+
+router.get('/api/posts/:id', function (req, res) {
+
+    Publication.findOne({_id:req.params.id}).exec(function(err, post){
+		res.json({
+            post: post
+        });
+	})
 });
 
 router.get('/partials/*', function(req, res){
